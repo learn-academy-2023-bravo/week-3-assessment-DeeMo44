@@ -65,22 +65,33 @@
         // No need to change anything ABOVE this line ^
 
         return (
-          <h1>Draw a Card</h1>
-          <button onClick={}>
-            Click to Draw a Card
-          </button>
-          <button onclick={shuffle}>
-            Return Cards and Shuffle Deck
-          </button>
-          <div style={handStyles}>
-            {hand.map((card, index) => {
-              return (
-                <div style={cardStyles} key={index}>
-                  {card}
-                </div>
-              )
-            })}
-          </div>
+
+        // 1) Wrappped everything in React fragments since there are multiple HTML tags
+
+        // 2) The first button did not have a function for onCLick so I added {drawCard}
+        //so a new card can be drawn on each click
+
+        // 3) The second button had a typo {onclick} so I changed it to {onClick} (needed camel case)
+        //now it can reset and shuffle deck.
+        
+          <>
+            <h1>Draw a Card</h1>
+
+            
+            <button onClick={drawCard}>Click to Draw a Card</button>
+
+            <button onClick={shuffle}>Return Cards and Shuffle Deck</button>
+          
+            <div style={handStyles}>
+              {hand.map((card, index) => {
+                return (
+                  <div style={cardStyles} key={index}>
+                    {card}
+                  </div>
+                )
+              })}
+            </div>
+          </>
         )
       }
 
